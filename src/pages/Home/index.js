@@ -13,21 +13,8 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const { data } = useData();
-  // Vérifie si les données existent et si elles contiennent des événements
-  const last =
-    data && data.events && data.events.length > 0
-      ? // Si des événements existent, trouve l'événement le plus récent
-        data.events.reduce((latest, current) => {
-          // Convertit les dates des événements en objets Date
-          const latestDate = new Date(latest.date);
-          const currentDate = new Date(current.date);
-
-          // Compare les dates et retourne l'événement le plus récent
-          return currentDate > latestDate ? current : latest;
-        })
-      : // Si aucun événement n'existe, retourne null
-        null;
+  const { last } = useData();
+ 
   return (
     <>
       <header>
